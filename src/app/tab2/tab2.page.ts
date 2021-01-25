@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {JobsService} from '../jobs.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +9,27 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  
+   
+    job:any;
 
-}
+    constructor(private router: Router, private jobService : JobsService) { 
+      this.router.getCurrentNavigation().extras.state
+      this.job = history.state
+      this.view();
+    }
+  
+    ngOnInit() {
+    }
+  
+    view(){
+      this.jobService.getOne(this.job)
+    }
+  
+    go()
+
+    {
+      this.router.navigateByUrl('/tabs/tab1');
+    }
+  
+  }

@@ -4,8 +4,16 @@
 
 export const environment = {
   production: false,
-  API_KEY:'71ea383c-def6-4809-ac70-bca2f2c30cc0',
-  API_URL:'https://yourjobboardaddress.jobboard.io/'
+ firebaseConfig:{
+    apiKey: "AIzaSyC909dUAsv7X7jGZFwv-85W0DzGSDAzPFs",
+    authDomain: "jobapiapp.firebaseapp.com",
+    projectId: "jobapiapp",
+    storageBucket: "jobapiapp.appspot.com",
+    messagingSenderId: "61071445770",
+    appId: "1:61071445770:web:593d19e39e4380769f34f3"
+  },
+ 
+  API_URL:'https://us-central1-mlab-challenge.cloudfunctions.net/jobs'
 };
 
 /*

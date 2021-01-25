@@ -1,17 +1,32 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Job-Job-Info</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-icon name="home" color="dark" (click)="go()"></ion-icon>
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-img src={{job.company_logo}}></ion-img>
+      </ion-item>
+      <ion-card-title>{{job.title}} - {{job.type}}</ion-card-title>
+      <ion-label>{{job.company}}</ion-label>
+      <ion-card-subtitle>{{job.created_at}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{job.description}}
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+      <ion-button color="secondary" color="dark" href={{job.url}}>Link</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+  
+  
+ 
 </ion-content>

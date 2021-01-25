@@ -1,17 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+     Job List
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-content >
+  <h2>Professional Job List</h2>
     <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+      <ion-card *ngFor="let article of jobs; index as i">
+        <ion-card-header>
+        <ion-card-subtitle>{{article.company}}</ion-card-subtitle>
+        <ion-card-title>{{article.created_at}}</ion-card-title>
+        
+        <ion-card-content>Position: {{article.title}}</ion-card-content>
+        <ion-label>Type: {{article.type}}</ion-label>
+        <br>
+        <ion-button type="submit" color="dark" (click)="viewJobInfo(article.id)" [routerLink]="['/tabs/tab2']">view job</ion-button>
+  
+     </ion-card-header>
+
+
+  </ion-card>
+
+  <!-- <ion-content >
+  
+      <div item-content style="display: flex; justify-content: space-between; width: 100%">
+    <img src="{{job.company_logo}}">
+    <div style="flex-grow: 1; text-align: center"><h1> Position : {{job.title}}</h1> </div>
+  </div>
+   <h2>{{job.location}}</h2>
+   <p> {{job.created_at}} &nbsp;&nbsp; | <ion-icon name="briefcase"></ion-icon>&nbsp;{{job.type}}</p>
+  <a  (click)="viewjobs(job)" > view</a>
+  <ion-item></ion-item>
+    </div>
+  </ion-content> -->
+
+    </ion-toolbar>
+
+
+
 </ion-content>

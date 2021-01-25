@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {JobsService} from '../jobs.service'
+import {JobsService} from '../jobs.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -8,16 +9,31 @@ import {JobsService} from '../jobs.service'
 })
 export class Tab1Page {
  jobs:any
-  constructor(public jobService:JobsService) {
-    this.loadjobs()
+  constructor(public jobService:JobsService,private router: Router) {
+    this.loadjobs(),this.viewJobInfo
   }
 
 
   loadjobs()
 {
-this.jobService.getJobs("top-headlines?country=us").subscribe(job=>{
-  this.jobService=job['jobs'];
+this.jobService.getJobs().subscribe(job=>{
+  this.jobs=job;
   console.log(this.jobs);
 })
 }
+
+selected:any
+viewJobInfo(id){
+  this.jobService.getOne(id);
+ console.log(this.jobService.getOne(id));
+  
+  this.router.navigateByUrl('/tabs/tab2', { state: id});
+  
+
+}
+
+  
+
+
+
 }
