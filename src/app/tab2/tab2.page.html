@@ -9,10 +9,11 @@
 
 <ion-content>
   <ion-icon name="home" color="dark" (click)="go()"></ion-icon>
-  <ion-card>
+  <ion-card *ngIf="job !== undefined">
     <ion-card-header>
-      <ion-item>
-        <ion-img src={{job.company_logo}}></ion-img>
+      <ion-item >
+        <ion-img src={{job.company_logo}} ></ion-img>
+      
       </ion-item>
       <ion-card-title>{{job.title}} - {{job.type}}</ion-card-title>
       <ion-label>{{job.company}}</ion-label>

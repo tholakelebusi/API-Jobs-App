@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {JobsService} from '../jobs.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -10,20 +10,31 @@ import { Router } from '@angular/router';
 export class Tab2Page {
 
   
-   
-    job:any;
+   id:string;
+    job:object;
+    display:boolean;
 
-    constructor(private router: Router, private jobService : JobsService) { 
-      this.router.getCurrentNavigation().extras.state
-      this.job = history.state
-      this.view();
+    constructor(private router: Router, private jobService : JobsService,private route:ActivatedRoute) { 
+      // this.router.getCurrentNavigation().extras.state
+      // this.job = history.state
+     this.display=false;
+
+
     }
   
     ngOnInit() {
+this.route.params.subscribe(data=>{
+  console.log(data);
+  this.id=data.id;
+  this.view();
+})
     }
   
     view(){
-      this.jobService.getOne(this.job)
+      this.jobService.getOne(this.id).subscribe(data=>{
+        console.log(data);
+        this.job=data;
+      })
     }
   
     go()

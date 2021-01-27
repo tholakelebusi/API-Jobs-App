@@ -25,9 +25,9 @@ this.jobService.getJobs().subscribe(job=>{
 selected:any
 viewJobInfo(id){
   this.jobService.getOne(id);
- console.log(this.jobService.getOne(id));
-  
-  this.router.navigateByUrl('/tabs/tab2', { state: id});
+//  console.log(this.jobService.getOne(id));
+  console.log(id);
+  this.router.navigate(['/tabs/tab2', id], { state: id});
   
 
 }
